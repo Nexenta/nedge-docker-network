@@ -1,0 +1,6 @@
+{
+	"Name": "ndnet",
+	"BridgePrefix": "nedge",
+	"NedgeHost": "localhost",
+	"NedgePort": 9090
+}
