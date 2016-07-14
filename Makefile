@@ -1,6 +1,9 @@
 NDNET_EXE = ndnet
 FLAGS = -v
 
+NEDGE_DEST = /opt/nedge/sbin
+NEDGE_ETC = /opt/nedge/etc/ccow
+
 all: $(NDNET_EXE)
 
 GO_FILES = src/github.com/Nexenta/nedge-docker-network/ndnet/ndnet.go \
@@ -26,6 +29,9 @@ deps: setup
 $(NDNET_EXE): $(GO_FILES)
 	GOPATH=$(shell pwd) go install github.com/Nexenta/nedge-docker-network/ndnet
 
+install: $(NDNET_EXE)
+	cp -f bin/$(NDNET_EXE) $(NEDGE_DEST)
+	cp -f src/github.com/Nexenta/nedge-docker-network/ndnet/daemon/ndnet.json $(NEDGE_ETC)
 build:
 	GOPATH=$(shell pwd) go build $(FLAGS) github.com/Nexenta/nedge-docker-network/ndnet
 
