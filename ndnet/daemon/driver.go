@@ -33,7 +33,7 @@ func DriverAlloc(cfgFile string) (NdnetDriver, error) {
 
 func (d NdnetDriver) GetCapabilities() (*dn.CapabilitiesResponse,
 	error) {
-	log.Debug(DN, "Received GetCapabilities req")
+	log.Debug(DN, "GetCapabilities req ")
 	capabilities := &dn.CapabilitiesResponse{
 		Scope: d.scope,
 	}
@@ -41,19 +41,19 @@ func (d NdnetDriver) GetCapabilities() (*dn.CapabilitiesResponse,
 }
 
 func (d NdnetDriver) CreateNetwork(req *dn.CreateNetworkRequest) error {
-	log.Debug(DN, "Received CreateNetwork req:\n%+v\n", req)
+	log.Debug(DN, "CreateNetwork req:\n%+v\n", req)
 	// Do nothing for now
 	return nil
 }
 
 func (d NdnetDriver) DeleteNetwork(req *dn.DeleteNetworkRequest) error {
-	log.Debug(DN, "Received DeleteNetwork req:\n%+v\n", req)
+	log.Debug(DN, "DeleteNetwork req:\n%+v\n", req)
 	// Do nothing for now
 	return nil
 }
 
 func (d NdnetDriver) CreateEndpoint(req *dn.CreateEndpointRequest) (*dn.CreateEndpointResponse, error) {
-	log.Debug(DN, "Received CreateEndpoint req:\n%+v\n", req)
+	log.Debug(DN, "CreateEndpoint req:\n%+v\n", req)
 
 	iface := new(dn.EndpointInterface)
 
@@ -70,12 +70,12 @@ func (d NdnetDriver) CreateEndpoint(req *dn.CreateEndpointRequest) (*dn.CreateEn
 }
 
 func (d NdnetDriver) DeleteEndpoint(req *dn.DeleteEndpointRequest) error {
-	log.Debug(DN, "Received DeleteEndpoint req:\n%+v\n", req)
+	log.Debug(DN, "DeleteEndpoint req:\n%+v\n", req)
 	return nil
 }
 
 func (d NdnetDriver) EndpointInfo(req *dn.InfoRequest) (*dn.InfoResponse, error) {
-	log.Debug(DN, "Received EndpointOperInfo req:\n%+v\n", req)
+	log.Debug(DN, "EndpointInfo req:\n%+v\n", req)
 	// empty map
 	value := make(map[string]string)
 	resp := &dn.InfoResponse{
@@ -85,7 +85,7 @@ func (d NdnetDriver) EndpointInfo(req *dn.InfoRequest) (*dn.InfoResponse, error)
 }
 
 func (d NdnetDriver) Join(req *dn.JoinRequest) (*dn.JoinResponse, error) {
-	log.Debug(DN, "Received Join req:\n%+v\n", req)
+	log.Debug(DN, "Join req:\n%+v\n", req)
 
 	resp := &dn.JoinResponse{
 		InterfaceName: dn.InterfaceName{
@@ -98,13 +98,13 @@ func (d NdnetDriver) Join(req *dn.JoinRequest) (*dn.JoinResponse, error) {
 }
 
 func (d NdnetDriver) Leave(req *dn.LeaveRequest) error {
-	log.Debug(DN, "Received Leave req:\n%+v\n", req)
+	log.Debug(DN, "Leave req:\n%+v\n", req)
 	// Do nothing for now
 	return nil
 }
 
 func (d NdnetDriver) DiscoverNew(req *dn.DiscoveryNotification) error {
-	log.Debug(DN, "Received DiscoverNew req:\n%+v\n", req)
+	log.Debug(DN, "DiscoverNew req:\n%+v\n", req)
 	if req.DiscoveryType == 1 {
 		// Node Discovery
 		log.Debug(DN, "DiscoveryType: NodeDiscovery\n")
@@ -114,7 +114,7 @@ func (d NdnetDriver) DiscoverNew(req *dn.DiscoveryNotification) error {
 }
 
 func (d NdnetDriver) DiscoverDelete(req *dn.DiscoveryNotification) error {
-	log.Debug(DN, "Received DiscoverDelete req:\n%+v\n", req)
+	log.Debug(DN, "DiscoverDelete req:\n%+v\n", req)
 	if req.DiscoveryType == 1 {
 		// Node Discovery
 		log.Debug(DN, "DiscoveryType: NodeDiscovery\n")
@@ -124,13 +124,13 @@ func (d NdnetDriver) DiscoverDelete(req *dn.DiscoveryNotification) error {
 }
 
 func (d NdnetDriver) ProgramExternalConnectivity(req *dn.ProgramExternalConnectivityRequest) error {
-	log.Debug(DN, "Received ProgramExternalConnectivity req:\n%+v\n", req)
+	log.Debug(DN, "ProgramExternalConnectivity req:\n%+v\n", req)
 	// Do nothing for now
 	return nil
 }
 
 func (d NdnetDriver) RevokeExternalConnectivity(req *dn.RevokeExternalConnectivityRequest) error {
-	log.Debug(DN, "Received RevokeExternalConnectivity req:\n%+v\n", req)
+	log.Debug(DN, "RevokeExternalConnectivity req:\n%+v\n", req)
 	return nil
 }
 

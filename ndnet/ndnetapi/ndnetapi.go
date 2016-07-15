@@ -128,13 +128,43 @@ func (c *Client) checkError(resp *http.Response) (bool) {
 
 
 func (c *Client) CreateNetwork(name string) (err error) {
-	log.Debug(AN, "Creating network %s", name)
+	log.Debug(AN, "Creating Network %s", name)
 	err = nil
 	return err
 }
 
 func (c *Client) DeleteNetwork(name string) (err error) {
-	log.Debug(AN, "Deleting Volume ", name)
+	log.Debug(AN, "Deleting Network ", name)
+	err = nil
+	return err
+}
+
+func (c *Client) CreateInterface(name string) (err error) {
+	log.Debug(AN, "Create Interface ", name)
+	err = nil
+	return err
+}
+
+func (c *Client) DeleteInterface(name string) (err error) {
+	log.Debug(AN, "Delete Interface ", name)
+	err = nil
+	return err
+}
+
+func (c *Client) GetInterface(name string) (err error) {
+	log.Debug(AN, "Get Interface ", name)
+	err = nil
+	return err
+}
+
+func (c *Client) Join(name string) (err error) {
+	log.Debug(AN, "Join Interface ", name)
+	err = nil
+	return err
+}
+
+func (c *Client) Leave(name string) (err error) {
+	log.Debug(AN, "Leave Interface ", name)
 	err = nil
 	return err
 }
