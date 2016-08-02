@@ -36,6 +36,9 @@ $(NDNET_EXE): $(GO_FILES)
 install: $(NDNET_EXE)
 	cp -f bin/$(NDNET_EXE) $(NEDGE_DEST)
 	cp -f src/github.com/Nexenta/nedge-docker-network/ndnet/daemon/ndnet.json $(NEDGE_ETC)
+uninstall:
+	rm -f $(NEDGE_DEST)/$(NDNET_EXE)
+	rm -f $(NEDGE_ETC)/ndnet.json
 build:
 	GOPATH=$(shell pwd) GOROOT=$(GO_INSTALL) $(GO) build $(FLAGS) github.com/Nexenta/nedge-docker-network/ndnet
 

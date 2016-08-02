@@ -6,6 +6,7 @@ import (
 	"sync"
 	dn "github.com/docker/go-plugins-helpers/network"
 	"github.com/Nexenta/nedge-docker-network/ndnet/ndnetapi"
+	"os/exec"
 )
 
 var (
@@ -55,6 +56,7 @@ func (d NdnetDriver) DeleteNetwork(req *dn.DeleteNetworkRequest) error {
 func (d NdnetDriver) CreateEndpoint(req *dn.CreateEndpointRequest) (*dn.CreateEndpointResponse, error) {
 	log.Debug(DN, "CreateEndpoint req:\n%+v\n", req)
 
+/*
 	iface := new(dn.EndpointInterface)
 
 	if req.Interface == nil {
@@ -66,11 +68,14 @@ func (d NdnetDriver) CreateEndpoint(req *dn.CreateEndpointRequest) (*dn.CreateEn
 	resp := &dn.CreateEndpointResponse{
 		Interface: iface,
 	}
+*/
+	resp := &dn.CreateEndpointResponse{}
 	return resp, nil
 }
 
 func (d NdnetDriver) DeleteEndpoint(req *dn.DeleteEndpointRequest) error {
 	log.Debug(DN, "DeleteEndpoint req:\n%+v\n", req)
+
 	return nil
 }
 
@@ -87,19 +92,21 @@ func (d NdnetDriver) EndpointInfo(req *dn.InfoRequest) (*dn.InfoResponse, error)
 func (d NdnetDriver) Join(req *dn.JoinRequest) (*dn.JoinResponse, error) {
 	log.Debug(DN, "Join req:\n%+v\n", req)
 
-	resp := &dn.JoinResponse{
-		InterfaceName: dn.InterfaceName{
-			SrcName:   "nedge_rep",
-			DstPrefix: "rep",
-		},
-		DisableGatewayService: false,
-	}
+	args := "/opt/nedge/src/nmf/nedocker ifup-ndnet " + req.EndpointID
+	log.Debug(args)
+	go exec.Command("/bin/sh", "-c", args).CombinedOutput()
+
+	resp := &dn.JoinResponse{}
 	return resp, nil
 }
 
 func (d NdnetDriver) Leave(req *dn.LeaveRequest) error {
 	log.Debug(DN, "Leave req:\n%+v\n", req)
-	// Do nothing for now
+
+	args := "/opt/nedge/src/nmf/nedocker ifdown-ndnet " + req.EndpointID
+	log.Debug(args)
+	go exec.Command("/bin/sh", "-c", args).CombinedOutput()
+
 	return nil
 }
 
