@@ -1,8 +1,8 @@
 NDNET_EXE = ndnet
 FLAGS = -v
 
-NEDGE_DEST = /opt/nedge/sbin
-NEDGE_ETC = /opt/nedge/etc/ccow
+NEDGE_DEST = $(DESTDIR)/opt/nedge/sbin
+NEDGE_ETC = $(DESTDIR)/opt/nedge/etc/ccow
 
 GO_VERSION = 1.6
 GO_INSTALL = /usr/lib/go-$(GO_VERSION)
