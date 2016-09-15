@@ -21,6 +21,5 @@ func Start(cfgFile string, debug bool) {
 		log.Fatalf("ERROR: %s init failed!", PLUGIN_NAME)
 	}
 	h := dn.NewHandler(d)
-	log.Info("%s driver created & initialized", PLUGIN_NAME)
 	log.Info(h.ServeTCP(PLUGIN_NAME, PLUGIN_PORT))
 }
