@@ -57,7 +57,6 @@ func cmdDaemonStop(c *cli.Context) {
 }
 
 func cmdDaemonStart(c *cli.Context) {
-	log.Println("CMD DAEMON START")
 	cntxt := &daemon.Context{
 		PidFileName: "/opt/nedge/var/run/ndnet.pid",
 		PidFilePerm: 0644,
@@ -71,7 +70,6 @@ func cmdDaemonStart(c *cli.Context) {
 	}
 	defer cntxt.Release()
 	if d != nil {
-		log.Println("RETURN")
 		return
 	}
 
@@ -87,7 +85,6 @@ func cmdDaemonStart(c *cli.Context) {
 }
 
 func DaemonStart(c *cli.Context) {
-	log.Println("DAEMON START")
 	verbose := c.Bool("verbose")
 	cfg := c.String("config")
 	if cfg == "" {
