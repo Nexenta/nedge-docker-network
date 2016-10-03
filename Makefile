@@ -28,6 +28,7 @@ deps: setup
 	GOPATH=$(shell pwd) GOROOT=$(GO_INSTALL) $(GO) get github.com/coreos/go-systemd/util
 	GOPATH=$(shell pwd) GOROOT=$(GO_INSTALL) $(GO) get github.com/opencontainers/runc/libcontainer/user
 	GOPATH=$(shell pwd) GOROOT=$(GO_INSTALL) $(GO) get golang.org/x/net/proxy
+	GOPATH=$(shell pwd) GOROOT=$(GO_INSTALL) $(GO) get github.com/sevlyar/go-daemon
 
 
 $(NDNET_EXE): $(GO_FILES)
