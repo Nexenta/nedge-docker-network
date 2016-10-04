@@ -21,7 +21,7 @@ install:
 
 uninstall:
 	rm -f $(NEDGE_ETC)/ndnet.json
-	rm -f $(GOPATH)/bin/ndnet
+	rm -f $(NEDGE_DEST)/ndnet
 
 clean:
 	go clean github.com/Nexenta/nedge-docker-network
