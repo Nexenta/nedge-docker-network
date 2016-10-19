@@ -7,7 +7,7 @@ import (
 	dn "github.com/docker/go-plugins-helpers/network"
 	"github.com/Nexenta/nedge-docker-network/ndnet/ndnetapi"
 	"os/exec"
-	"os/Stat"
+	"os/stat"
 )
 
 var (
@@ -94,7 +94,7 @@ func (d NdnetDriver) Join(req *dn.JoinRequest) (*dn.JoinResponse, error) {
 	log.Debug(DN, "Join req:\n%+v\n", req)
 
 	args := "/opt/nedge/src/nmf/nedocker"
-	if _, err := Stat(args); err != nil {
+	if _, err := stat(args); err != nil {
 		args := "/opt/nedge/nmf/nedocker"
 	}
 	args := args + " ifup-ndnet " + req.EndpointID
@@ -109,7 +109,7 @@ func (d NdnetDriver) Leave(req *dn.LeaveRequest) error {
 	log.Debug(DN, "Leave req:\n%+v\n", req)
 
 	args := "/opt/nedge/src/nmf/nedocker"
-	if _, err := Stat(args); err != nil {
+	if _, err := stat(args); err != nil {
 		args := "/opt/nedge/nmf/nedocker"
 	}
 	args := args + " ifdown-ndnet " + req.EndpointID
