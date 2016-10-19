@@ -92,11 +92,11 @@ func (d NdnetDriver) EndpointInfo(req *dn.InfoRequest) (*dn.InfoResponse, error)
 func (d NdnetDriver) Join(req *dn.JoinRequest) (*dn.JoinResponse, error) {
 	log.Debug(DN, "Join req:\n%+v\n", req)
 
-	if _, err := os.Stat("/opt/nedge/src/nmf/nedocker"); err == nil {
-		args := "/opt/nedge/src/nmf/nedocker ifup-ndnet " + req.EndpointID
-	} else {
-		args := "/opt/nedge/nmf/nedocker ifup-ndnet " + req.EndpointID
+	args := "/opt/nedge/src/nmf/nedocker"
+	if _, err := os.Stat(args); err != nil {
+		args := "/opt/nedge/nmf/nedocker"
 	}
+	args := args + " ifup-ndnet " + req.EndpointID
 	log.Debug(args)
 	go exec.Command("/bin/sh", "-c", args).CombinedOutput()
 
@@ -107,11 +107,11 @@ func (d NdnetDriver) Join(req *dn.JoinRequest) (*dn.JoinResponse, error) {
 func (d NdnetDriver) Leave(req *dn.LeaveRequest) error {
 	log.Debug(DN, "Leave req:\n%+v\n", req)
 
-	if _, err := os.Stat("/opt/nedge/src/nmf/nedocker"); err == nil {
-		args := "/opt/nedge/src/nmf/nedocker ifdown-ndnet " + req.EndpointID
-	} else {
-		args := "/opt/nedge/nmf/nedocker ifdown-ndnet " + req.EndpointID
+	args := "/opt/nedge/src/nmf/nedocker"
+	if _, err := os.Stat(args); err != nil {
+		args := "/opt/nedge/nmf/nedocker"
 	}
+	args := args + " ifdown-ndnet " + req.EndpointID
 	log.Debug(args)
 	go exec.Command("/bin/sh", "-c", args).CombinedOutput()
 
