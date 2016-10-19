@@ -6,6 +6,7 @@ import (
 	"sync"
 	dn "github.com/docker/go-plugins-helpers/network"
 	"github.com/Nexenta/nedge-docker-network/ndnet/ndnetapi"
+	"os/exec"
 	"os"
 )
 
@@ -94,11 +95,11 @@ func (d NdnetDriver) Join(req *dn.JoinRequest) (*dn.JoinResponse, error) {
 
 	args := "/opt/nedge/src/nmf/nedocker"
 	if _, err := os.Stat(args); err != nil {
-		args := "/opt/nedge/nmf/nedocker"
+		args = "/opt/nedge/nmf/nedocker"
 	}
-	args := args + " ifup-ndnet " + req.EndpointID
+	args = args + " ifup-ndnet " + req.EndpointID
 	log.Debug(args)
-	go os.exec.Command("/bin/sh", "-c", args).CombinedOutput()
+	go exec.Command("/bin/sh", "-c", args).CombinedOutput()
 
 	resp := &dn.JoinResponse{}
 	return resp, nil
@@ -109,11 +110,11 @@ func (d NdnetDriver) Leave(req *dn.LeaveRequest) error {
 
 	args := "/opt/nedge/src/nmf/nedocker"
 	if _, err := os.Stat(args); err != nil {
-		args := "/opt/nedge/nmf/nedocker"
+		args = "/opt/nedge/nmf/nedocker"
 	}
-	args := args + " ifdown-ndnet " + req.EndpointID
+	args = args + " ifdown-ndnet " + req.EndpointID
 	log.Debug(args)
-	go os.exec.Command("/bin/sh", "-c", args).CombinedOutput()
+	go exec.Command("/bin/sh", "-c", args).CombinedOutput()
 
 	return nil
 }
