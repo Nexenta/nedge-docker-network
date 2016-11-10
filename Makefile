@@ -3,8 +3,8 @@ NEDGE_ETC = $(DESTDIR)/opt/nedge/etc/ccow
 NDNET_EXE = ndnet
 
 build: 
-	GOPATH=$(shell pwd) go get -v github.com/docker/go-plugins-helpers/...
-	cd src/github.com/docker/go-plugins-helpers; git checkout d7fc7d0
+	GOPATH=$(shell pwd) go get -v github.com/docker/go-plugins-helpers/network
+	cd src/github.com/docker/go-plugins-helpers/network; git checkout d7fc7d0
 	GOPATH=$(shell pwd) go get -v github.com/Nexenta/nedge-docker-network/...
 
 lint:
