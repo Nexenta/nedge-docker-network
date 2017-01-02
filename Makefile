@@ -5,6 +5,7 @@ NDNET_EXE = ndnet
 build: 
 	GOPATH=$(shell pwd) go get -v github.com/docker/go-plugins-helpers/network
 	cd src/github.com/docker/go-plugins-helpers/network; git checkout d7fc7d0
+	cd src/github.com/docker/go-connections; git checkout acbe915
 	GOPATH=$(shell pwd) go get -v github.com/Nexenta/nedge-docker-network/...
 
 lint:
