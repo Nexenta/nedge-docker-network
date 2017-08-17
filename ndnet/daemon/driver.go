@@ -150,3 +150,12 @@ func (d NdnetDriver) RevokeExternalConnectivity(req *dn.RevokeExternalConnectivi
 	return nil
 }
 
+func (d NdnetDriver) AllocateNetwork (r *dn.AllocateNetworkRequest) (*dn.AllocateNetworkResponse, error) {
+       log.Debugf("AllocateNetwork Called: [ %+v ]", r)
+       return nil, nil
+}
+
+func (d NdnetDriver) FreeNetwork(r *dn.FreeNetworkRequest) error {
+       log.Debugf("FreeNetwork Called: [ %+v ]", r)
+       return nil
+}
