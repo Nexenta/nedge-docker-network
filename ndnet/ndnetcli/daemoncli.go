@@ -1,10 +1,10 @@
 package ndnetcli
 
 import (
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 	ndnetDaemon "github.com/Nexenta/nedge-docker-network/ndnet/daemon"
 	"github.com/sevlyar/go-daemon"
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	"syscall"
 )
 

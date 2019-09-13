@@ -1,7 +1,7 @@
 package daemon
 
 import (
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	dn "github.com/docker/go-plugins-helpers/network"
 )
 

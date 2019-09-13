@@ -2,7 +2,7 @@
 package daemon
 
 import (
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	"sync"
 	dn "github.com/docker/go-plugins-helpers/network"
 	"github.com/Nexenta/nedge-docker-network/ndnet/ndnetapi"
