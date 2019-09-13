@@ -8,15 +8,16 @@ endif
 
 build:
 	# docker/go-plugins-helpers
-	GOPATH=$(GOPATH) go get -d -v github.com/docker/go-plugins-helpers/network
-	cd src/github.com/docker/go-plugins-helpers/network; git checkout a9ef19c479cb60e751efa55f7f2b265776af1abf
+	#GOPATH=$(GOPATH) go get -d -v github.com/docker/go-plugins-helpers/network
+	#cd src/github.com/docker/go-plugins-helpers/network; git checkout a9ef19c479cb60e751efa55f7f2b265776af1abf
 	# opencontainers/runc
-	GOPATH=$(GOPATH) go get -d -v github.com/opencontainers/runc
-	cd src/github.com/opencontainers/runc; git checkout aada2af
+	#GOPATH=$(GOPATH) go get -d -v github.com/opencontainers/runc
+	#cd src/github.com/opencontainers/runc; git checkout aada2af
 	# docker/go-connections
-	GOPATH=$(GOPATH) go get -d -v github.com/docker/go-connections
-	cd src/github.com/docker/go-connections; git checkout 3ede32e2033de7505e6500d6c868c2b9ed9f169d
-	GOPATH=$(GOPATH) go get -v github.com/Nexenta/nedge-docker-network/...
+	#GOPATH=$(GOPATH) go get -d -v github.com/docker/go-connections
+	#cd src/github.com/docker/go-connections; git checkout 3ede32e2033de7505e6500d6c868c2b9ed9f169d
+	#GOPATH=$(GOPATH) go get -v github.com/Nexenta/nedge-docker-network/...
+	GO111MODULE=on CGO_ENABLED=0 go build -o bin/$(NDNET_EXE) ndnet/ndnet.go 
 
 lint:
 	GOPATH=$(GOPATH) GOROOT=$(GO_INSTALL) $(GO) get -v github.com/golang/lint/golint
